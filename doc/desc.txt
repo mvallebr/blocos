@@ -1,0 +1,73 @@
+Descrição do jogo blocos
+Nome do jogo: Blocos
+Resolução do jogo: 640 x 480 x 8bits
+
+----------------------------------------------------------------------------------
+Descrição da interface e dos níveis:
+Ao iniciar o jogo, o usuário vê um menu com as seguintes opções:
+1 - escolher nível
+2 - sair
+
+Escolhendo a opção 1, ele vê um menu de todos os níveis disponíveis. Seleciona um com o teclado e tecla ENTER para começar a jogar aquele nível. Acabando o nível ele volta para o menu.
+
+Cada nível corresponde a uma tela da resolução indicada acima dividida em quadrados de 20x20 pixels, ou seja, uma tela de 32x24 quadrados. A tela é dividida como demonstrado na FIGURA1.
+Na figura, as partes em vermelho e em azul servem para exibir número de vidas, pontos e outras coisas do gênero. A parte rosa é reservada e a parte verde é a parte onde ficam os blocos a serem acertados. O bloco preto é o sprite controlado pelo jogador.
+A parte verde é a parte que muda de nível para nível. Essa parte é composta por 14x16 retângulos de 40x20 pixels, que correspondem aos blocos.
+As partes vermelha e rosa tem 24 quadrados de altura e 2 de largura. A parte azul tem 32 de largura e 2 de altura.
+O bloco preto tem tamanho inicial de 40x20, mas pode ter seu tamanho alterado no decorrer do jogo.
+
+----------------------------------------------------------------------------------
+Funcionamento do jogo:
+O jogo começa com um nível carregado e com o bloco preto com a coordenada x no centro da tela. Uma bola fica em cima do bloco do jogador até que o jogador pressione a tecla de espaço. Uma vez pressionada, a bola é lançada para cima. Cada vez que a bola colide, seu movimento é alterado, de forma a parecer que um choque perfeitamente elástco ocorreu.
+Cada vez que a bola colide em um bloco, o bloco sofre uma reação, que varia de acordo com o tipo de bloco e com o tipo de bola atual. As reações são descritas a seguir. O objetivo do jogador é quebrar todos os blocos que podem ser quebrados sem que a bola caia para baixo da linha tracejada. Para não deixar a bola cair, o jogador deve movimentar o bloco para os lados de forma que esse colida com a bola.
+Quando um bloco quebra, por vezes deixa cair um bônus, representado por um retângulo de 40x20 pixels. Caso o jogador consiga fazer seu sprite colidir com o bônus, o bônus é acionado. Os tipos de bônus são descritos a seguir.
+
+----------------------------------------------------------------------------------
+Tipos de blocos:
+0 - Bloco padrão, quando a colisão acontece ele é destruido.
+1 - quando a colisão acontece, se transforma no bloco 0.
+2 - quando a colisão acontece, se transforma no bloco 1.
+3 - Bloco indestrutível, não quebra nunca
+
+----------------------------------------------------------------------------------
+Tipos de bola:
+0 - Tipo padrão, muda seu movimento quando colide com os blocos.
+1 - Indestrutível, quebra qualquer bloco destrutível mas não muda seu movimento ao colidir.
+
+----------------------------------------------------------------------------------
+Tipos de bônus:
+0 - Faz o usuário ganhar uma vida
+1 - Muda tipo de bola para 0
+2 - Muda tipo de bola para 1
+3 - Adiciona uma nova bola ao jogo, ou seja, o jogador passa a ter uma bola a mais para quebrar os blocos.
+4 - Altera o tamanho do sprite do jogador para 60x20 caso seja diferente, ou para 40x20 caso já tenha esse tamanho.
+5 - Altera o tamanho do sprite do jogador para 30x20 caso seja diferente, ou para 40x20 caso já tenha esse tamanho.
+6 - Adiciona barreira no chão ou retira a mesma, caso já exista. Não deixa a bola passar do chão, ou seja, o usuário não tem como perder enquanto o bônus está ativo.
+
+----------------------------------------------------------------------------------
+Colisões e velocidades:
+Cada bola tem uma velocidade em pixels para a coordenada X e Y. Essa velocidade vai de -MAX_VELX até MAX_VEL_X para x e -MAX_VEL_Y até MAX_VEL_Y para y. Sempre que ocorre uma colisão e o movimento muda, as velocidades são alteradas. Quando a bola colide com uma superfície plana, apenas uma das coordenadas é invertida, nada mais. Quando a bola bate em uma quina, as velocidades x e y são ajustadas de acordo com o ângulo que a bola faz com a quina.
+
+----------------------------------------------------------------------------------
+Níveis:
+O jogo procura os arquivos contendo os níveis em uma pasta (um diretório) fixa. Cada arquivo .blc na pasta corresponde ao nível. Para cada arquivo .blc, deve existir um arquivo .png (imagem) com o mesmo nome, correspondendo à imagem de fundo do nível. Por exemplo, se existe um arquivo nivel1.blc, deve existir outro nivel1.png. Caso não exista, uma imagem padrão é usada. A imagem deve abranger toda a área correspondente à área verde da tela.
+O formato do arquivo .blc é apenas uma sequência de 16 linhas, cada uma contendo 14 números inteiros que correspondem ao tipo de bloco sendo utilizado. Cada inteiro corresponde a um bloco contido na área correspondente à área verde da figura.  Caso o número seja negativo, isso significa que ná há bloco naquela posição.
+
+----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
